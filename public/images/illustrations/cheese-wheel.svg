@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 430 320" role="img" aria-label="Ilustración lineal de una rueda de queso">
+  <g fill="none" stroke="#f5f3ee" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke-width="3" d="M52 206c10-72 65-125 139-139 75-14 152 12 188 68 21 33 14 82-18 108-49 40-166 50-245 24-45-15-69-37-64-61Z"/>
+    <path stroke-width="2" d="M58 198c48 28 127 42 201 33 59-7 103-26 122-54"/>
+    <path stroke-width="2" d="M102 112c44-22 114-31 176-13 42 12 72 33 87 58"/>
+    <path stroke-width="2" d="M174 77c-7 31-5 85 5 131 4 20 10 40 18 57"/>
+    <path stroke-width="2" d="M245 80c-20 27-29 85-22 145"/>
+    <path stroke-width="2" d="M296 99c-18 31-25 70-20 115"/>
+    <path stroke-width="2" d="M126 261c-3-50 4-104 25-177"/>
+    <path stroke-width="1.4" d="M76 218c32-10 67-15 107-16M83 235c46-13 96-18 151-15M112 251c49-9 100-12 153-8M86 183c34 8 72 13 115 15M104 155c47 12 100 17 159 14M129 129c56 12 112 15 169 8"/>
+    <path stroke-width="1.2" d="M212 101c-8 26-11 63-8 111M234 102c-6 28-8 66-4 112M258 110c-6 25-9 57-7 95M281 121c-5 23-7 48-5 76"/>
+    <path stroke-width="1.2" d="M47 279c52-22 113-32 184-29 54 2 101 12 143 29M70 291c40-14 90-21 151-20 54 1 101 8 140 20M103 303c55-10 135-11 215-2"/>
+  </g>
+</svg>

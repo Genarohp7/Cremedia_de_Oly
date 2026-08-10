@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080808"/>
+  <g fill="none" stroke="#f5f3ee" stroke-linecap="round" stroke-linejoin="round" opacity=".52">
+    <path stroke-width="6" d="M732 358c13-88 81-152 172-169 91-17 185 15 228 83 26 41 18 101-22 133-60 49-202 61-299 29-55-18-84-45-79-76Z"/>
+    <path stroke-width="3" d="M742 348c58 35 155 52 246 41 71-9 125-32 148-66"/>
+    <path stroke-width="3" d="M799 242c54-27 140-38 216-16 51 15 88 41 106 71"/>
+    <path stroke-width="2" d="M797 427c72-18 157-24 253-18"/>
+  </g>
+  <text x="88" y="196" fill="#f5f3ee" font-family="Georgia, serif" font-size="92">Cremería D’Oly</text>
+  <text x="92" y="270" fill="#d8d4ca" font-family="Arial, sans-serif" font-size="28" letter-spacing="12">MI PEQUEÑO GRAN GOURMET</text>
+  <text x="92" y="392" fill="#f5f3ee" font-family="Arial, sans-serif" font-size="42">Quesos, productos artesanales</text>
+  <text x="92" y="448" fill="#f5f3ee" font-family="Arial, sans-serif" font-size="42">y productos gourmet.</text>
+  <line x1="92" y1="515" x2="515" y2="515" stroke="#f5f3ee" opacity=".45"/>
+</svg>

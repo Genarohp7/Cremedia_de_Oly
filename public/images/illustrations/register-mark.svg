@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-label="Marca lineal decorativa">
+  <g fill="none" stroke="#f5f3ee" stroke-linecap="round">
+    <circle cx="80" cy="80" r="54" stroke-width="2"/>
+    <circle cx="80" cy="80" r="34" stroke-width="1.5" stroke-dasharray="4 9"/>
+    <path stroke-width="2" d="M80 17v32M80 111v32M17 80h32M111 80h32"/>
+    <path stroke-width="1.5" d="M54 54 106 106M106 54 54 106"/>
+  </g>
+</svg>
