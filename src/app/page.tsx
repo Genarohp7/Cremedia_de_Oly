@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { hasContact, siteConfig } from "@/data/site";
+import { assetPath } from "@/lib/asset-path";
 
 const contactItems = [
   { label: "WhatsApp", value: siteConfig.contact.whatsapp, href: siteConfig.contact.whatsapp ? `https://wa.me/${siteConfig.contact.whatsapp}` : "" },
@@ -73,7 +74,7 @@ export default function Home() {
         <section className="hero" id="inicio" aria-labelledby="hero-title">
           <div className="hero-media" aria-hidden="true">
             <Image
-              src="/images/generated/hero-gourmet.png"
+              src={assetPath("/images/generated/hero-gourmet.png")}
               alt=""
               width={1536}
               height={1024}
@@ -92,7 +93,7 @@ export default function Home() {
           </div>
           <Image
             className="hero-engraving"
-            src="/images/illustrations/cheese-wheel.svg"
+            src={assetPath("/images/illustrations/cheese-wheel.svg")}
             alt=""
             width={430}
             height={320}
@@ -142,7 +143,7 @@ export default function Home() {
         </section>
 
         <section className="editorial-break" aria-label="Frase editorial">
-          <Image src="/images/illustrations/gourmet-pattern.svg" alt="" width={380} height={220} aria-hidden="true" />
+          <Image src={assetPath("/images/illustrations/gourmet-pattern.svg")} alt="" width={380} height={220} aria-hidden="true" />
           <p>
             Pequeños detalles.
             <br />
@@ -191,7 +192,7 @@ export default function Home() {
             </div>
           ) : (
             <div className="locations-empty">
-              <Image src="/images/illustrations/register-mark.svg" alt="" width={160} height={160} aria-hidden="true" />
+              <Image src={assetPath("/images/illustrations/register-mark.svg")} alt="" width={160} height={160} aria-hidden="true" />
               <p>Próximamente encontrarás aquí nuestras ubicaciones y horarios.</p>
               <span>El espacio está preparado para agregar direcciones reales cuando el cliente las confirme.</span>
             </div>

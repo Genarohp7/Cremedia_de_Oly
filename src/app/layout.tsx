@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
+import { assetPath } from "@/lib/asset-path";
 
 const title = "Cremería D’Oly | Quesos y productos gourmet";
 const description =
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   title,
   description,
   applicationName: siteConfig.businessName,
+  metadataBase: new URL(siteConfig.metadataBase),
   alternates: {
     canonical: siteConfig.siteUrl || undefined
   },
@@ -28,8 +30,8 @@ export const metadata: Metadata = {
     images: [siteConfig.ogImage]
   },
   icons: {
-    icon: "/favicon.svg",
-    apple: "/apple-icon.svg"
+    icon: assetPath("/favicon.svg"),
+    apple: assetPath("/apple-icon.svg")
   },
   robots: {
     index: true,

@@ -1,3 +1,5 @@
+import { assetPath } from "@/lib/asset-path";
+
 export type Location = {
   id: string;
   name: string;
@@ -15,9 +17,10 @@ export const siteConfig = {
   claim: "Mi pequeño gran gourmet",
   description:
     "Quesos, productos artesanales y una selección gourmet para disfrutar los buenos sabores.",
-  siteUrl: "",
-  logo: "/images/brand/cremeria-doly-logo-original.jpeg",
-  ogImage: "/og.svg",
+  siteUrl: "https://genarohp7.github.io/Cremedia_de_Oly",
+  metadataBase: "https://genarohp7.github.io",
+  logo: assetPath("/images/brand/cremeria-doly-logo-original.jpeg"),
+  ogImage: assetPath("/og.svg"),
   navigation: [
     { label: "Inicio", href: "#inicio" },
     { label: "Productos", href: "#productos" },
@@ -31,24 +34,24 @@ export const siteConfig = {
       number: "01",
       title: "Quesos",
       intro: "Texturas, cortes y sabores para una mesa que se disfruta con calma.",
-      image: "/images/generated/categoria-quesos.png",
-      illustration: "/images/illustrations/cheese-wedge.svg"
+      image: assetPath("/images/generated/categoria-quesos.png"),
+      illustration: assetPath("/images/illustrations/cheese-wedge.svg")
     },
     {
       id: "artesanales",
       number: "02",
       title: "Productos artesanales",
       intro: "Selección cercana, pensada para acompañar momentos sencillos y bien cuidados.",
-      image: "/images/generated/categoria-artesanales.png",
-      illustration: "/images/illustrations/gourmet-pattern.svg"
+      image: assetPath("/images/generated/categoria-artesanales.png"),
+      illustration: assetPath("/images/illustrations/gourmet-pattern.svg")
     },
     {
       id: "gourmet",
       number: "03",
       title: "Productos gourmet",
       intro: "Detalles elegidos para quienes encuentran gusto en combinar, probar y compartir.",
-      image: "/images/generated/categoria-gourmet.png",
-      illustration: "/images/illustrations/cheese-wheel.svg"
+      image: assetPath("/images/generated/categoria-gourmet.png"),
+      illustration: assetPath("/images/illustrations/cheese-wheel.svg")
     }
   ],
   contact: {
