@@ -1,7 +1,16 @@
 import type { Metadata, Viewport } from "next";
+import { Great_Vibes } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/data/site";
 import { assetPath } from "@/lib/asset-path";
+
+const greatVibes = Great_Vibes({
+  weight: "400",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-great-vibes",
+  fallback: ["Georgia", "Times New Roman", "serif"]
+});
 
 const title = "Cremería D’Oly | Quesos y productos gourmet";
 const description =
@@ -50,7 +59,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es-MX">
+    <html className={greatVibes.variable} lang="es-MX">
       <body>{children}</body>
     </html>
   );

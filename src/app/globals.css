@@ -10,6 +10,9 @@
   --max: 1180px;
   --serif: Georgia, "Times New Roman", serif;
   --sans: "Avenir Next", Avenir, "Segoe UI", Helvetica, Arial, sans-serif;
+  --font-ui: var(--sans);
+  --font-editorial: var(--serif);
+  --font-accent: var(--font-great-vibes), cursive;
 }
 
 * {
@@ -24,7 +27,7 @@ body {
   margin: 0;
   background: var(--black);
   color: var(--bone);
-  font-family: var(--sans);
+  font-family: var(--font-ui);
   overflow-x: hidden;
 }
 
@@ -82,7 +85,7 @@ img {
   align-items: center;
   border: 1px solid rgba(245, 243, 238, 0.62);
   display: grid;
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: 1.35rem;
   height: 2.45rem;
   place-items: center;
@@ -206,7 +209,7 @@ p {
 }
 
 h1 {
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: clamp(2.65rem, 9vw, 6rem);
   font-weight: 400;
   letter-spacing: 0;
@@ -282,7 +285,7 @@ h1 {
 .about h2,
 .locations h2,
 .contact h2 {
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: clamp(2.4rem, 7vw, 5.2rem);
   font-weight: 400;
   letter-spacing: 0;
@@ -326,7 +329,7 @@ h1 {
 .product-number {
   align-self: start;
   color: rgba(8, 8, 8, 0.42);
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: clamp(3rem, 9vw, 7rem);
   line-height: 0.8;
 }
@@ -359,12 +362,16 @@ h1 {
 }
 
 .product-copy h3 {
-  font-family: var(--serif);
-  font-size: clamp(2rem, 4.6vw, 4.4rem);
+  font-family: var(--font-accent);
+  font-size: clamp(2.75rem, 5.5vw, 5rem);
   font-weight: 400;
-  line-height: 1;
+  letter-spacing: 0;
+  line-height: 1.08;
   margin-bottom: 1rem;
+  overflow-wrap: normal;
+  padding-block: 0.06em 0.1em;
   text-wrap: balance;
+  word-break: normal;
 }
 
 .product-copy p {
@@ -402,7 +409,7 @@ h1 {
 }
 
 .editorial-break p {
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: clamp(3rem, 10vw, 6rem);
   line-height: 0.98;
   margin: 0;
@@ -511,7 +518,7 @@ h1 {
 }
 
 .locations-empty p {
-  font-family: var(--serif);
+  font-family: var(--font-editorial);
   font-size: clamp(1.8rem, 4vw, 3.2rem);
   line-height: 1.05;
   margin-bottom: 0;
