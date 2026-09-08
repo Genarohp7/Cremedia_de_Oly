@@ -34,7 +34,7 @@ export const siteConfig = {
       number: "01",
       title: "Quesos",
       intro: "Texturas, cortes y sabores para una mesa que se disfruta con calma.",
-      image: assetPath("/images/generated/categoria-quesos.png"),
+      image: assetPath("/images/products/gouda-holandes.png"),
       illustration: assetPath("/images/illustrations/cheese-wedge.svg")
     },
     {
