@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { hasContact, siteConfig } from "@/data/site";
 import { assetPath } from "@/lib/asset-path";
 
@@ -9,47 +10,6 @@ const contactItems = [
   { label: "Facebook", value: siteConfig.social.facebook, href: siteConfig.social.facebook },
   { label: "Instagram", value: siteConfig.social.instagram, href: siteConfig.social.instagram }
 ].filter((item) => item.value && item.href);
-
-function Header() {
-  return (
-    <header className="site-header">
-      <a className="brand-lockup" href="#inicio" aria-label="Ir al inicio">
-        <span className="brand-mark">D</span>
-        <span>
-          <strong>{siteConfig.businessName}</strong>
-          <small>{siteConfig.claim}</small>
-        </span>
-      </a>
-
-      <nav className="desktop-nav" aria-label="Navegación principal">
-        {siteConfig.navigation.map((item) => (
-          <a key={item.href} href={item.href}>
-            {item.label}
-          </a>
-        ))}
-      </nav>
-
-      <a className="header-cta" href="#contacto">
-        Contáctanos
-      </a>
-
-      <details className="mobile-menu">
-        <summary aria-label="Abrir menú">
-          <span />
-          <span />
-          <span />
-        </summary>
-        <nav aria-label="Navegación móvil">
-          {siteConfig.navigation.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-      </details>
-    </header>
-  );
-}
 
 function JsonLd() {
   const data = {
@@ -64,12 +24,10 @@ function JsonLd() {
 }
 
 export default function Home() {
-  const year = new Date().getFullYear();
-
   return (
     <>
       <JsonLd />
-      <Header />
+      <SiteHeader />
       <main>
         <section className="hero" id="inicio" aria-labelledby="hero-title">
           <div className="hero-media" aria-hidden="true">
@@ -87,7 +45,7 @@ export default function Home() {
             <h1 id="hero-title">{siteConfig.businessName}</h1>
             <p className="hero-copy">{siteConfig.description}</p>
             <div className="hero-actions" aria-label="Acciones principales">
-              <a href="#productos">Conoce nuestros productos</a>
+              <a href={assetPath("/productos/")}>Conoce nuestros productos</a>
               <a href="#contacto">Contáctanos</a>
             </div>
           </div>
@@ -104,41 +62,33 @@ export default function Home() {
           </span>
         </section>
 
-        <section className="products" id="productos" aria-labelledby="products-title">
-          <div className="section-intro">
-            <p>Una selección para disfrutar</p>
-            <h2 id="products-title">Productos</h2>
-            <span>Productos elegidos para quienes disfrutan los buenos sabores y los pequeños detalles.</span>
-          </div>
-
-          <div className="product-list">
-            {siteConfig.categories.map((category, index) => (
-              <article className="product-row" key={category.id}>
-                <div className="product-number">{category.number}</div>
-                <div className="product-visual">
-                  <Image
-                    src={category.image}
-                    alt={`Ambientación visual de ${category.title.toLowerCase()}`}
-                    width={1024}
-                    height={1536}
-                    sizes="(min-width: 900px) 34vw, 88vw"
-                  />
-                  <Image
-                    className="product-illustration"
-                    src={category.illustration}
-                    alt=""
-                    width={220}
-                    height={160}
-                    aria-hidden="true"
-                  />
-                </div>
-                <div className="product-copy">
-                  <h3>{category.title}</h3>
-                  <p>{category.intro}</p>
-                  <span>{index === 0 ? "Selección confirmada" : "Categoría confirmada"}</span>
-                </div>
-              </article>
-            ))}
+        <section className="home-catalog" id="productos" aria-labelledby="products-title">
+          <div className="home-catalog-inner">
+            <div className="home-catalog-copy">
+              <p>Una selección para disfrutar</p>
+              <h2 id="products-title">Nuestros productos</h2>
+              <p>
+                Una selección de quesos, semillas, productos artesanales y especialidades gourmet para disfrutar los buenos sabores.
+              </p>
+              <a href={assetPath("/productos/")}>Explorar nuestro catálogo</a>
+            </div>
+            <figure className="home-catalog-visual">
+              <Image
+                alt="Selección de quesos artesanales"
+                height={853}
+                sizes="(min-width: 900px) 46vw, 92vw"
+                src={assetPath("/images/catalog/category-quesos.webp")}
+                width={1280}
+              />
+              <Image
+                aria-hidden="true"
+                alt=""
+                className="home-catalog-illustration"
+                height={160}
+                src={assetPath("/images/illustrations/cheese-wedge.svg")}
+                width={220}
+              />
+            </figure>
           </div>
         </section>
 
@@ -224,20 +174,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="footer">
-        <div>
-          <strong>{siteConfig.businessName}</strong>
-          <span>{siteConfig.claim}</span>
-        </div>
-        <nav aria-label="Navegación del pie">
-          {siteConfig.navigation.map((item) => (
-            <a key={item.href} href={item.href}>
-              {item.label}
-            </a>
-          ))}
-        </nav>
-        <p>© {year} {siteConfig.businessName}</p>
-      </footer>
+      <SiteFooter />
     </>
   );
 }
