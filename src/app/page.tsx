@@ -72,21 +72,13 @@ export default function Home() {
               </p>
               <a href={assetPath("/productos/")}>Explorar nuestro catálogo</a>
             </div>
-            <figure className="home-catalog-visual">
+            <figure className="home-catalog-visual is-contain">
               <Image
-                alt="Selección de quesos artesanales"
-                height={853}
+                alt="Queso Panela de Cremería D’Oly"
+                height={960}
                 sizes="(min-width: 900px) 46vw, 92vw"
-                src={assetPath("/images/catalog/category-quesos.webp")}
-                width={1280}
-              />
-              <Image
-                aria-hidden="true"
-                alt=""
-                className="home-catalog-illustration"
-                height={160}
-                src={assetPath("/images/illustrations/cheese-wedge.svg")}
-                width={220}
+                src={assetPath("/images/products/client/web/queso-panela.webp")}
+                width={1200}
               />
             </figure>
           </div>
@@ -115,61 +107,63 @@ export default function Home() {
           <figure className="history-frame">
             <Image
               src={siteConfig.logo}
-              alt="Logo original de Cremería D’Oly con ilustración de queso en blanco sobre negro"
-              width={554}
-              height={554}
+              alt="Logo oficial de Cremería D’Oly en blanco sobre negro"
+              width={222}
+              height={170}
               sizes="(min-width: 900px) 36vw, 88vw"
             />
-            <figcaption>Identidad visual original de la marca.</figcaption>
+            <figcaption>Identidad visual oficial de la marca.</figcaption>
           </figure>
-        </section>
-
-        <section className="locations" id="sucursales" aria-labelledby="locations-title">
-          <div>
-            <p>Sucursales</p>
-            <h2 id="locations-title">Encuentra tu D’Oly</h2>
-          </div>
-
-          {siteConfig.locations.length > 0 ? (
-            <div className="location-list">
-              {siteConfig.locations.map((location) => (
-                <article key={location.id}>
-                  <h3>{location.name}</h3>
-                  {location.address ? <p>{location.address}</p> : null}
-                  {location.hours ? <p>{location.hours}</p> : null}
-                </article>
-              ))}
-            </div>
-          ) : (
-            <div className="locations-empty">
-              <Image src={assetPath("/images/illustrations/register-mark.svg")} alt="" width={160} height={160} aria-hidden="true" />
-              <p>Próximamente encontrarás aquí nuestras ubicaciones y horarios.</p>
-              <span>El espacio está preparado para agregar direcciones reales cuando el cliente las confirme.</span>
-            </div>
-          )}
         </section>
 
         <section className="contact" id="contacto" aria-labelledby="contact-title">
           <div className="contact-inner">
-            <div>
-              <p>Contacto</p>
-              <h2 id="contact-title">Hablemos</h2>
-            </div>
-            <p>
-              ¿Buscas información sobre nuestros productos o quieres conocer más de Cremería D’Oly? Estamos para ayudarte.
-            </p>
-
-            {hasContact ? (
-              <div className="contact-links">
-                {contactItems.map((item) => (
-                  <a key={item.label} href={item.href}>
-                    {item.label}
-                  </a>
-                ))}
+            <div className="contact-copy">
+              <div>
+                <p>Contacto</p>
+                <h2 id="contact-title">Hablemos</h2>
               </div>
-            ) : (
-              <p className="pending-contact">Los medios de contacto se integrarán cuando el cliente los confirme.</p>
-            )}
+              <p>
+                ¿Buscas información sobre nuestros productos o quieres conocer más de Cremería D’Oly? Estamos para ayudarte.
+              </p>
+
+              {hasContact ? (
+                <div className="contact-links">
+                  {contactItems.map((item) => (
+                    <a key={item.label} href={item.href}>
+                      {item.label}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="pending-contact">Los medios de contacto se integrarán cuando el cliente los confirme.</p>
+              )}
+            </div>
+
+            <div className="location-block">
+              <div className="location-heading">
+                <p>Visítanos</p>
+                <h3>Encuéntranos en Google Maps</h3>
+              </div>
+              <div className="location-map">
+                <iframe
+                  aria-hidden="true"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  src={siteConfig.location.mapsEmbedUrl}
+                  tabIndex={-1}
+                  title="Mapa de ubicación de Cremería D’Oly"
+                />
+                <a
+                  aria-label="Ver ubicación de Cremería D’Oly en Google Maps"
+                  href={siteConfig.location.mapsUrl}
+                  rel="noopener noreferrer"
+                  target="_blank"
+                >
+                  <span>Ver ubicación en Google Maps</span>
+                </a>
+              </div>
+            </div>
           </div>
         </section>
       </main>

@@ -54,9 +54,9 @@ function CategoryShowcase({ category }: { category: CatalogCategory }) {
 
   return (
     <figure className="category-showcase" key={category.id}>
-      <div className="category-showcase-media">
+      <div className={`category-showcase-media is-${category.imageFit ?? "cover"}`}>
         <Image
-          alt={`Selección de ${category.name.toLowerCase()}`}
+          alt={category.imageAlt ?? `Selección de ${category.name.toLowerCase()}`}
           height={category.imageHeight ?? 853}
           priority={category.order === 1}
           sizes="(min-width: 1100px) 30vw, (min-width: 700px) 42vw, 92vw"
@@ -85,7 +85,18 @@ function CategoryShowcase({ category }: { category: CatalogCategory }) {
 
 function ProductItem({ product, number }: { product: CatalogProduct; number: number }) {
   return (
-    <article className="catalog-product-item">
+    <article className={`catalog-product-item${product.image ? " has-image" : ""}`}>
+      {product.image ? (
+        <div className={`catalog-product-media is-${product.imageFit ?? "cover"}`}>
+          <Image
+            alt={product.imageAlt ?? product.name}
+            height={product.imageHeight ?? 900}
+            sizes="(min-width: 1100px) 18vw, (min-width: 700px) 28vw, 92vw"
+            src={product.image}
+            width={product.imageWidth ?? 1200}
+          />
+        </div>
+      ) : null}
       <span>{String(number).padStart(2, "0")}</span>
       <h3>{product.name}</h3>
       {product.description ? <p>{product.description}</p> : null}
