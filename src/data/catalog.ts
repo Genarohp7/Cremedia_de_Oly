@@ -18,6 +18,10 @@ export type CatalogSubcategory = {
   id: string;
   name: string;
   order: number;
+  image?: string;
+  imageAlt?: string;
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
 export type CatalogProduct = {
@@ -51,40 +55,40 @@ export const catalogCategories: CatalogCategory[] = [
     imageHeight: 960,
     order: 6,
     subcategories: [
-      { id: "suaves", name: "Suaves", order: 1 },
-      { id: "semi-duros", name: "Semi-duros", order: 2 },
-      { id: "duros", name: "Duros", order: 3 }
+      { id: "suaves", name: "Suaves", order: 1, image: assetPath("/images/catalog/collections/quesos-suaves-doly.webp"), imageAlt: "Selección editorial de quesos suaves", imageWidth: 1280, imageHeight: 853 },
+      { id: "semi-duros", name: "Semi-duros", order: 2, image: assetPath("/images/catalog/collections/quesos-semi-duros-doly.webp"), imageAlt: "Selección editorial de quesos semi-duros", imageWidth: 1280, imageHeight: 853 },
+      { id: "duros", name: "Duros", order: 3, image: assetPath("/images/catalog/collections/quesos-duros-doly.webp"), imageAlt: "Selección editorial de quesos duros", imageWidth: 1280, imageHeight: 853 }
     ]
   },
-  { id: "carnes-embutidos", name: "Charcutería", description: "Charcutería nacional y de importación.", image: assetPath("/images/products/client/web/longaniza.webp"), imageAlt: "Longaniza disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 1200, imageHeight: 960, order: 7 },
+  { id: "carnes-embutidos", name: "Charcutería", description: "Charcutería nacional y de importación.", image: assetPath("/images/catalog/collections/charcuteria-doly.webp"), imageAlt: "Selección editorial de charcutería nacional y de importación", imageWidth: 1280, imageHeight: 853, order: 7 },
   { id: "productos-frescos", name: "Productos frescos", description: "Productos frescos que complementan el catálogo.", image: assetPath("/images/products/client/web/homologated/huevos-homologado.webp"), imageAlt: "Huevos disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 730, imageHeight: 1200, order: 8 }
 ];
 
 export const catalogProducts: CatalogProduct[] = [
-  { id: "nuez", name: "Nuez", categoryId: "semillas" },
+  { id: "nuez", name: "Nuez", categoryId: "semillas", image: assetPath("/images/catalog/products/nuez-doly.webp"), imageAlt: "Representación editorial provisional de nuez para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "almendra", name: "Almendra", categoryId: "semillas" },
-  { id: "arandano", name: "Arándano", categoryId: "semillas" },
+  { id: "arandano", name: "Arándano", categoryId: "semillas", image: assetPath("/images/catalog/products/arandano-doly.webp"), imageAlt: "Representación editorial provisional de arándano para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "cacahuate-sin-sal", name: "Cacahuate sin sal", categoryId: "semillas" },
   { id: "datiles", name: "Dátiles", categoryId: "semillas" },
   { id: "ciruela-sin-hueso", name: "Ciruela sin hueso", categoryId: "semillas" },
   { id: "pimienta-negra-bola", name: "Pimienta negra bola", categoryId: "semillas" },
   { id: "ajonjoli-tostado", name: "Ajonjolí tostado", categoryId: "semillas" },
-  { id: "granola", name: "Granola", categoryId: "semillas" },
-  { id: "tlayudas", name: "Tlayudas", categoryId: "productos-oaxaquenos" },
+  { id: "granola", name: "Granola", categoryId: "semillas", image: assetPath("/images/catalog/products/granola-doly.webp"), imageAlt: "Representación editorial provisional de granola para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
+  { id: "tlayudas", name: "Tlayudas", categoryId: "productos-oaxaquenos", image: assetPath("/images/catalog/products/tlayudas-doly.webp"), imageAlt: "Representación editorial provisional de tlayudas para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "asiento", name: "Asiento", categoryId: "productos-oaxaquenos" },
-  { id: "chapulines", name: "Chapulines", categoryId: "productos-oaxaquenos" },
+  { id: "chapulines", name: "Chapulines", categoryId: "productos-oaxaquenos", image: assetPath("/images/catalog/products/chapulines-doly.webp"), imageAlt: "Representación editorial provisional de chapulines para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "totopos", name: "Totopos", categoryId: "productos-oaxaquenos" },
   { id: "cacahuate-con-ajo", name: "Cacahuate con ajo", categoryId: "productos-oaxaquenos" },
-  { id: "mole-negro", name: "Mole negro", categoryId: "productos-oaxaquenos" },
+  { id: "mole-negro", name: "Mole negro", categoryId: "productos-oaxaquenos", image: assetPath("/images/catalog/products/mole-negro-doly.webp"), imageAlt: "Representación editorial provisional de mole negro para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "mole-rojo", name: "Mole rojo", categoryId: "productos-oaxaquenos" },
   { id: "mole-colorado", name: "Mole colorado", categoryId: "productos-oaxaquenos" },
-  { id: "natas", name: "Natas", categoryId: "lacteos-derivados" },
+  { id: "natas", name: "Natas", categoryId: "lacteos-derivados", image: assetPath("/images/catalog/products/natas-doly.webp"), imageAlt: "Representación editorial provisional de natas para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "cremas", name: "Cremas", categoryId: "lacteos-derivados" },
-  { id: "mantequilla-hierbas-ajo", name: "Mantequilla de hierbas finas y ajo", categoryId: "lacteos-derivados" },
-  { id: "jaleas", name: "Jaleas", categoryId: "jaleas-miel" },
-  { id: "miel", name: "Miel", categoryId: "jaleas-miel" },
-  { id: "pan-de-oaxaca", name: "Pan de Oaxaca", categoryId: "panaderia-artesanal" },
-  { id: "marranitos-piloncillo", name: "Marranitos de piloncillo", categoryId: "panaderia-artesanal" },
+  { id: "mantequilla-hierbas-ajo", name: "Mantequilla de hierbas finas y ajo", categoryId: "lacteos-derivados", image: assetPath("/images/catalog/products/mantequilla-hierbas-ajo-doly.webp"), imageAlt: "Representación editorial provisional de mantequilla con hierbas finas y ajo para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
+  { id: "jaleas", name: "Jaleas", categoryId: "jaleas-miel", image: assetPath("/images/catalog/products/jaleas-doly.webp"), imageAlt: "Representación editorial provisional de jaleas para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
+  { id: "miel", name: "Miel", categoryId: "jaleas-miel", image: assetPath("/images/catalog/products/miel-doly.webp"), imageAlt: "Representación editorial provisional de miel para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
+  { id: "pan-de-oaxaca", name: "Pan de Oaxaca", categoryId: "panaderia-artesanal", image: assetPath("/images/catalog/products/pan-oaxaca-doly.webp"), imageAlt: "Representación editorial provisional de pan de Oaxaca para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
+  { id: "marranitos-piloncillo", name: "Marranitos de piloncillo", categoryId: "panaderia-artesanal", image: assetPath("/images/catalog/products/marranitos-piloncillo-doly.webp"), imageAlt: "Representación editorial provisional de marranitos de piloncillo para el catálogo de Cremería D’Oly", imageWidth: 1280, imageHeight: 853 },
   { id: "queso-oaxaca", name: "Queso Oaxaca", categoryId: "quesos", subcategoryId: "suaves", image: assetPath("/images/products/client/web/queso-oaxaca.webp"), imageAlt: "Queso Oaxaca de Cremería D’Oly", imageFit: "contain", imageWidth: 1200, imageHeight: 960 },
   { id: "queso-panela", name: "Queso Panela", categoryId: "quesos", subcategoryId: "suaves", image: assetPath("/images/products/client/web/queso-panela.webp"), imageAlt: "Queso Panela de Cremería D’Oly", imageFit: "contain", imageWidth: 1200, imageHeight: 960 },
   { id: "doble-crema", name: "Doble Crema", categoryId: "quesos", subcategoryId: "suaves" },

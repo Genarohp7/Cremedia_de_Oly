@@ -116,6 +116,33 @@ function ProductItem({
   );
 }
 
+function ProductItems({
+  className,
+  headingLevel = 3,
+  productNumbers,
+  products
+}: {
+  className: string;
+  headingLevel?: 3 | 4;
+  productNumbers: ReadonlyMap<string, number>;
+  products: CatalogProduct[];
+}) {
+  if (products.length === 0) return null;
+
+  return (
+    <div className={className}>
+      {products.map((product) => (
+        <ProductItem
+          headingLevel={headingLevel}
+          key={product.id}
+          number={productNumbers.get(product.id) ?? 0}
+          product={product}
+        />
+      ))}
+    </div>
+  );
+}
+
 function ProductGrid({
   products,
   subcategories
@@ -140,6 +167,8 @@ function ProductGrid({
     ? groupedProducts.some((subcategory) => subcategory.products.length > INITIAL_GROUP_PRODUCT_COUNT)
     : products.length > INITIAL_PRODUCT_COUNT;
   const productNumbers = new Map(products.map((product, index) => [product.id, index + 1]));
+  const featuredProducts = visibleProducts.filter((product) => product.image);
+  const textProducts = visibleProducts.filter((product) => !product.image);
 
   return (
     <div className="catalog-products" aria-live="polite">
@@ -153,6 +182,8 @@ function ProductGrid({
             const groupProducts = expanded
               ? subcategory.products
               : subcategory.products.slice(0, INITIAL_GROUP_PRODUCT_COUNT);
+            const groupFeaturedProducts = groupProducts.filter((product) => product.image);
+            const groupTextProducts = groupProducts.filter((product) => !product.image);
             const headingId = `catalog-subcategory-${subcategory.id}`;
 
             return (
@@ -161,25 +192,47 @@ function ProductGrid({
                   <h3 id={headingId}>{subcategory.name}</h3>
                   <span>{subcategory.products.length}</span>
                 </div>
-                <div className="catalog-product-grid">
-                  {groupProducts.map((product) => (
-                    <ProductItem
-                      headingLevel={4}
-                      key={product.id}
-                      number={productNumbers.get(product.id) ?? 0}
-                      product={product}
-                    />
-                  ))}
+                <div className={`catalog-product-group-body${subcategory.image ? " has-image" : ""}`}>
+                  {subcategory.image ? (
+                    <div className="catalog-product-group-media">
+                      <Image
+                        alt={subcategory.imageAlt ?? `Selección de quesos ${subcategory.name.toLowerCase()}`}
+                        height={subcategory.imageHeight ?? 853}
+                        sizes="(min-width: 1100px) 18vw, (min-width: 700px) 34vw, 92vw"
+                        src={subcategory.image}
+                        width={subcategory.imageWidth ?? 1280}
+                      />
+                    </div>
+                  ) : null}
+                  <ProductItems
+                    className="catalog-featured-grid"
+                    headingLevel={4}
+                    productNumbers={productNumbers}
+                    products={groupFeaturedProducts}
+                  />
+                  <ProductItems
+                    className="catalog-text-grid"
+                    headingLevel={4}
+                    productNumbers={productNumbers}
+                    products={groupTextProducts}
+                  />
                 </div>
               </section>
             );
           })}
         </div>
       ) : (
-        <div className="catalog-product-grid">
-          {visibleProducts.map((product, index) => (
-            <ProductItem key={product.id} number={index + 1} product={product} />
-          ))}
+        <div className="catalog-product-layout">
+          <ProductItems
+            className="catalog-featured-grid"
+            productNumbers={productNumbers}
+            products={featuredProducts}
+          />
+          <ProductItems
+            className="catalog-text-grid"
+            productNumbers={productNumbers}
+            products={textProducts}
+          />
         </div>
       )}
       {hasMore ? (
