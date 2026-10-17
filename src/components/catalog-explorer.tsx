@@ -2,9 +2,10 @@
 
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import type { CatalogCategory, CatalogProduct } from "@/data/catalog";
+import type { CatalogCategory, CatalogProduct, CatalogSubcategory } from "@/data/catalog";
 
 const INITIAL_PRODUCT_COUNT = 6;
+const INITIAL_GROUP_PRODUCT_COUNT = 3;
 
 type CatalogExplorerProps = {
   categories: CatalogCategory[];
@@ -83,7 +84,17 @@ function CategoryShowcase({ category }: { category: CatalogCategory }) {
   );
 }
 
-function ProductItem({ product, number }: { product: CatalogProduct; number: number }) {
+function ProductItem({
+  product,
+  number,
+  headingLevel = 3
+}: {
+  product: CatalogProduct;
+  number: number;
+  headingLevel?: 3 | 4;
+}) {
+  const ProductHeading = headingLevel === 4 ? "h4" : "h3";
+
   return (
     <article className={`catalog-product-item${product.image ? " has-image" : ""}`}>
       {product.image ? (
@@ -98,17 +109,37 @@ function ProductItem({ product, number }: { product: CatalogProduct; number: num
         </div>
       ) : null}
       <span>{String(number).padStart(2, "0")}</span>
-      <h3>{product.name}</h3>
+      <ProductHeading>{product.name}</ProductHeading>
       {product.description ? <p>{product.description}</p> : null}
       {typeof product.price === "number" ? <p className="catalog-product-price">${product.price}</p> : null}
     </article>
   );
 }
 
-function ProductGrid({ products }: { products: CatalogProduct[] }) {
+function ProductGrid({
+  products,
+  subcategories
+}: {
+  products: CatalogProduct[];
+  subcategories?: CatalogSubcategory[];
+}) {
   const [expanded, setExpanded] = useState(false);
+  const sortedSubcategories = useMemo(
+    () => [...(subcategories ?? [])].sort((a, b) => a.order - b.order),
+    [subcategories]
+  );
+  const groupedProducts = sortedSubcategories
+    .map((subcategory) => ({
+      ...subcategory,
+      products: products.filter((product) => product.subcategoryId === subcategory.id)
+    }))
+    .filter((subcategory) => subcategory.products.length > 0);
+  const isGrouped = groupedProducts.length > 0;
   const visibleProducts = expanded ? products : products.slice(0, INITIAL_PRODUCT_COUNT);
-  const hasMore = products.length > INITIAL_PRODUCT_COUNT;
+  const hasMore = isGrouped
+    ? groupedProducts.some((subcategory) => subcategory.products.length > INITIAL_GROUP_PRODUCT_COUNT)
+    : products.length > INITIAL_PRODUCT_COUNT;
+  const productNumbers = new Map(products.map((product, index) => [product.id, index + 1]));
 
   return (
     <div className="catalog-products" aria-live="polite">
@@ -116,11 +147,41 @@ function ProductGrid({ products }: { products: CatalogProduct[] }) {
         <p>{products.length} {products.length === 1 ? "producto" : "productos"}</p>
         <span>Catálogo confirmado</span>
       </div>
-      <div className="catalog-product-grid">
-        {visibleProducts.map((product, index) => (
-          <ProductItem key={product.id} number={index + 1} product={product} />
-        ))}
-      </div>
+      {isGrouped ? (
+        <div className="catalog-product-groups">
+          {groupedProducts.map((subcategory) => {
+            const groupProducts = expanded
+              ? subcategory.products
+              : subcategory.products.slice(0, INITIAL_GROUP_PRODUCT_COUNT);
+            const headingId = `catalog-subcategory-${subcategory.id}`;
+
+            return (
+              <section className="catalog-product-group" aria-labelledby={headingId} key={subcategory.id}>
+                <div className="catalog-product-group-heading">
+                  <h3 id={headingId}>{subcategory.name}</h3>
+                  <span>{subcategory.products.length}</span>
+                </div>
+                <div className="catalog-product-grid">
+                  {groupProducts.map((product) => (
+                    <ProductItem
+                      headingLevel={4}
+                      key={product.id}
+                      number={productNumbers.get(product.id) ?? 0}
+                      product={product}
+                    />
+                  ))}
+                </div>
+              </section>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="catalog-product-grid">
+          {visibleProducts.map((product, index) => (
+            <ProductItem key={product.id} number={index + 1} product={product} />
+          ))}
+        </div>
+      )}
       {hasMore ? (
         <button className="catalog-more" onClick={() => setExpanded((value) => !value)} type="button">
           <span aria-hidden="true">{expanded ? "−" : "+"}</span>
@@ -148,7 +209,11 @@ export function CatalogExplorer({ categories, products }: CatalogExplorerProps) 
           <h2 id="active-category-title">{activeCategory.name}</h2>
         </div>
         <CategoryShowcase category={activeCategory} />
-        <ProductGrid key={activeCategory.id} products={activeProducts} />
+        <ProductGrid
+          key={activeCategory.id}
+          products={activeProducts}
+          subcategories={activeCategory.subcategories}
+        />
       </div>
     </section>
   );

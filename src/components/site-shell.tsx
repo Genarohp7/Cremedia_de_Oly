@@ -11,7 +11,7 @@ export function SiteHeader() {
       <nav className="desktop-nav" aria-label="Navegación principal">
         {siteConfig.navigation.map((item) => <a key={item.href} href={item.href}>{item.label}</a>)}
       </nav>
-      <a className="header-cta" href={assetPath("/#contacto")}>Contáctanos</a>
+      <a className="header-cta" href={siteConfig.contact.whatsappUrl} rel="noopener noreferrer" target="_blank">Contáctanos</a>
       <details className="mobile-menu">
         <summary aria-label="Abrir menú"><span /><span /><span /></summary>
         <nav aria-label="Navegación móvil">

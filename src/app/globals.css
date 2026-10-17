@@ -571,6 +571,38 @@ h1 {
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+.catalog-product-groups {
+  display: grid;
+  gap: clamp(1.75rem, 3vw, 2.75rem);
+}
+
+.catalog-product-group {
+  min-width: 0;
+}
+
+.catalog-product-group-heading {
+  align-items: baseline;
+  border-bottom: 1px solid rgba(8, 8, 8, 0.42);
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 0.65rem;
+}
+
+.catalog-product-group-heading h3 {
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.catalog-product-group-heading span {
+  color: var(--smoke);
+  font-family: var(--font-editorial);
+  font-size: 0.82rem;
+}
+
 .catalog-product-item {
   border-top: 1px solid rgba(8, 8, 8, 0.22);
   min-height: 112px;
@@ -611,7 +643,8 @@ h1 {
   margin-bottom: 0.75rem;
 }
 
-.catalog-product-item h3 {
+.catalog-product-item h3,
+.catalog-product-item h4 {
   font-family: var(--font-editorial);
   font-size: clamp(1.15rem, 2vw, 1.45rem);
   font-weight: 400;
@@ -726,8 +759,10 @@ h1 {
 
 .history-frame {
   align-self: center;
+  justify-self: center;
   margin: 0;
   position: relative;
+  width: min(100%, 300px);
 }
 
 .history-frame::before {
@@ -738,19 +773,14 @@ h1 {
 }
 
 .history-frame img {
+  display: block;
   filter: grayscale(1) contrast(1.08);
+  height: auto;
+  margin-inline: auto;
+  max-width: 250px;
+  object-fit: contain;
   position: relative;
   width: 100%;
-  z-index: 1;
-}
-
-.history-frame figcaption {
-  color: oklch(0.34 0.006 86);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
-  margin-top: 1rem;
-  position: relative;
-  text-transform: uppercase;
   z-index: 1;
 }
 
@@ -794,7 +824,20 @@ h1 {
 
 .contact-links a {
   border: 1px solid rgba(245, 243, 238, 0.55);
-  padding: 0.8rem 1rem;
+  display: inline-grid;
+  place-items: center;
+}
+
+.contact-links .whatsapp-link {
+  aspect-ratio: 1;
+  padding: 0;
+  width: 3.25rem;
+}
+
+.whatsapp-link svg {
+  fill: currentColor;
+  height: 1.55rem;
+  width: 1.55rem;
 }
 
 .pending-contact {

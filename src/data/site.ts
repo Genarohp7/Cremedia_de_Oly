@@ -16,8 +16,10 @@ export const siteConfig = {
     { label: "Contacto", href: assetPath("/#contacto") }
   ],
   contact: {
-    phone: "",
-    whatsapp: "",
+    phone: "+52 55 2245 2889",
+    phoneHref: "tel:+525522452889",
+    whatsapp: "+52 55 2245 2889",
+    whatsappUrl: "https://wa.me/525522452889",
     email: ""
   },
   social: {

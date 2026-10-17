@@ -3,14 +3,6 @@ import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { hasContact, siteConfig } from "@/data/site";
 import { assetPath } from "@/lib/asset-path";
 
-const contactItems = [
-  { label: "WhatsApp", value: siteConfig.contact.whatsapp, href: siteConfig.contact.whatsapp ? `https://wa.me/${siteConfig.contact.whatsapp}` : "" },
-  { label: "Teléfono", value: siteConfig.contact.phone, href: siteConfig.contact.phone ? `tel:${siteConfig.contact.phone}` : "" },
-  { label: "Email", value: siteConfig.contact.email, href: siteConfig.contact.email ? `mailto:${siteConfig.contact.email}` : "" },
-  { label: "Facebook", value: siteConfig.social.facebook, href: siteConfig.social.facebook },
-  { label: "Instagram", value: siteConfig.social.instagram, href: siteConfig.social.instagram }
-].filter((item) => item.value && item.href);
-
 function JsonLd() {
   const data = {
     "@context": "https://schema.org",
@@ -46,7 +38,7 @@ export default function Home() {
             <p className="hero-copy">{siteConfig.description}</p>
             <div className="hero-actions" aria-label="Acciones principales">
               <a href={assetPath("/productos/")}>Conoce nuestros productos</a>
-              <a href="#contacto">Contáctanos</a>
+              <a href={siteConfig.contact.whatsappUrl} rel="noopener noreferrer" target="_blank">Contáctanos</a>
             </div>
           </div>
           <Image
@@ -112,7 +104,6 @@ export default function Home() {
               height={170}
               sizes="(min-width: 900px) 36vw, 88vw"
             />
-            <figcaption>Identidad visual oficial de la marca.</figcaption>
           </figure>
         </section>
 
@@ -129,11 +120,17 @@ export default function Home() {
 
               {hasContact ? (
                 <div className="contact-links">
-                  {contactItems.map((item) => (
-                    <a key={item.label} href={item.href}>
-                      {item.label}
-                    </a>
-                  ))}
+                  <a
+                    aria-label="Contactar a Cremería D’Oly por WhatsApp"
+                    className="whatsapp-link"
+                    href={siteConfig.contact.whatsappUrl}
+                    rel="noopener noreferrer"
+                    target="_blank"
+                  >
+                    <svg aria-hidden="true" viewBox="0 0 32 32">
+                      <path d="M16.01 3A12.8 12.8 0 0 0 5.1 22.5L3 29l6.7-2.02A12.95 12.95 0 1 0 16.01 3Zm0 23.73c-2.1 0-4.14-.58-5.91-1.68l-.42-.25-3.97 1.2 1.24-3.86-.27-.44a10.58 10.58 0 1 1 9.33 5.03Zm5.8-7.92c-.32-.16-1.88-.92-2.17-1.03-.29-.1-.5-.16-.71.16-.21.32-.82 1.03-1 1.24-.19.21-.37.24-.69.08-.32-.16-1.34-.49-2.55-1.57a9.58 9.58 0 0 1-1.77-2.2c-.18-.32-.02-.49.14-.65.14-.14.32-.37.47-.55.16-.19.21-.32.32-.53.1-.21.05-.4-.03-.56-.08-.16-.71-1.71-.98-2.35-.26-.62-.52-.54-.71-.55h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64 0 1.56 1.14 3.07 1.29 3.28.16.21 2.24 3.42 5.43 4.8.76.33 1.35.52 1.81.67.76.24 1.45.21 2 .13.61-.09 1.88-.77 2.14-1.51.26-.74.26-1.37.18-1.51-.08-.13-.29-.21-.61-.37Z" />
+                    </svg>
+                  </a>
                 </div>
               ) : (
                 <p className="pending-contact">Los medios de contacto se integrarán cuando el cliente los confirme.</p>
