@@ -1,5 +1,7 @@
 import Image from "next/image";
+import { HomeProductCarousel } from "@/components/home-product-carousel";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import { featuredHomeSlides } from "@/data/home";
 import { hasContact, siteConfig } from "@/data/site";
 import { assetPath } from "@/lib/asset-path";
 
@@ -64,15 +66,7 @@ export default function Home() {
               </p>
               <a href={assetPath("/productos/")}>Explorar nuestro catálogo</a>
             </div>
-            <figure className="home-catalog-visual is-contain">
-              <Image
-                alt="Queso Panela de Cremería D’Oly"
-                height={960}
-                sizes="(min-width: 900px) 46vw, 92vw"
-                src={assetPath("/images/products/client/web/queso-panela.webp")}
-                width={1200}
-              />
-            </figure>
+            <HomeProductCarousel slides={featuredHomeSlides} />
           </div>
         </section>
 

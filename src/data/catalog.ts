@@ -48,11 +48,11 @@ export const catalogCategories: CatalogCategory[] = [
     id: "quesos",
     name: "Quesos",
     description: "Una selección de quesos nacionales y de importación para cada gusto y paladar.",
-    image: assetPath("/images/products/client/web/queso-oaxaca.webp"),
-    imageAlt: "Queso Oaxaca de Cremería D’Oly",
+    image: assetPath("/images/products/client/web/nov-2026/seleccion-quesos-botella.webp"),
+    imageAlt: "Selección de quesos disponibles en Cremería D’Oly",
     imageFit: "contain",
-    imageWidth: 1200,
-    imageHeight: 960,
+    imageWidth: 720,
+    imageHeight: 704,
     order: 6,
     subcategories: [
       { id: "suaves", name: "Suaves", order: 1 },
@@ -61,7 +61,8 @@ export const catalogCategories: CatalogCategory[] = [
     ]
   },
   { id: "carnes-embutidos", name: "Charcutería", description: "Charcutería nacional y de importación.", image: assetPath("/images/products/client/web/longaniza.webp"), imageAlt: "Longaniza disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 1200, imageHeight: 960, order: 7 },
-  { id: "productos-frescos", name: "Productos frescos", description: "Productos frescos que complementan el catálogo.", image: assetPath("/images/products/client/web/homologated/huevos-homologado.webp"), imageAlt: "Huevos disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 730, imageHeight: 1200, order: 8 }
+  { id: "productos-frescos", name: "Productos frescos", description: "Productos frescos que complementan el catálogo.", image: assetPath("/images/products/client/web/homologated/huevos-homologado.webp"), imageAlt: "Huevos disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 730, imageHeight: 1200, order: 8 },
+  { id: "despensa-gourmet", name: "Despensa gourmet", description: "Una selección de productos y especialidades para complementar cada mesa.", image: assetPath("/images/products/client/web/nov-2026/pesto-ravioli.webp"), imageAlt: "Pesto y ravioli disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 720, imageHeight: 481, order: 9 }
 ];
 
 export const catalogProducts: CatalogProduct[] = [
@@ -105,7 +106,9 @@ export const catalogProducts: CatalogProduct[] = [
   { id: "edam", name: "Edam", categoryId: "quesos", subcategoryId: "semi-duros" },
   { id: "port-salut", name: "Port Salut", categoryId: "quesos", subcategoryId: "semi-duros" },
   { id: "queso-cheddar", name: "Queso Cheddar", categoryId: "quesos", subcategoryId: "semi-duros", image: assetPath("/images/products/client/web/homologated/queso-cheddar-homologado.webp"), imageAlt: "Queso Cheddar disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 712, imageHeight: 1200 },
-  { id: "monterrey-jack", name: "Monterrey Jack", categoryId: "quesos", subcategoryId: "semi-duros" },
+  { id: "monterrey-jack", name: "Monterrey Jack", categoryId: "quesos", subcategoryId: "semi-duros", image: assetPath("/images/products/client/web/nov-2026/monterrey-jack.webp"), imageAlt: "Queso Monterrey Jack disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 720, imageHeight: 648 },
+  { id: "pepper-jack", name: "Pepper Jack", categoryId: "quesos", subcategoryId: "semi-duros", image: assetPath("/images/products/client/web/nov-2026/pepper-jack.webp"), imageAlt: "Queso Pepper Jack disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 720, imageHeight: 641 },
+  { id: "marble-jack", name: "Marble Jack", categoryId: "quesos", subcategoryId: "semi-duros", image: assetPath("/images/products/client/web/nov-2026/marble-jack.webp"), imageAlt: "Queso Marble Jack disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 720, imageHeight: 681 },
   { id: "cotija", name: "Cotija", categoryId: "quesos", subcategoryId: "duros" },
   { id: "parmesano", name: "Parmesano", categoryId: "quesos", subcategoryId: "duros" },
   { id: "anejo", name: "Añejo", categoryId: "quesos", subcategoryId: "duros" },
@@ -125,5 +128,12 @@ export const catalogProducts: CatalogProduct[] = [
   { id: "queso-puerco", name: "Queso de puerco", categoryId: "carnes-embutidos" },
   { id: "salamanca", name: "Salamanca", categoryId: "carnes-embutidos" },
   { id: "cecina", name: "Cecina", categoryId: "carnes-embutidos", image: assetPath("/images/products/client/web/homologated/cecina-homologado.webp"), imageAlt: "Cecina disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 1122, imageHeight: 1200 },
-  { id: "huevos", name: "Huevos", categoryId: "productos-frescos", image: assetPath("/images/products/client/web/homologated/huevos-homologado.webp"), imageAlt: "Huevos disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 730, imageHeight: 1200 }
+  { id: "huevos", name: "Huevos", categoryId: "productos-frescos", image: assetPath("/images/products/client/web/homologated/huevos-homologado.webp"), imageAlt: "Huevos disponibles en Cremería D’Oly", imageFit: "contain", imageWidth: 730, imageHeight: 1200 },
+  { id: "flor-jamaica", name: "Flor de Jamaica", categoryId: "despensa-gourmet", image: assetPath("/images/products/client/web/nov-2026/flor-jamaica.webp"), imageAlt: "Flor de Jamaica disponible en Cremería D’Oly", imageFit: "contain", imageWidth: 720, imageHeight: 907 },
+  { id: "nuez-enchilada", name: "Nuez enchilada", categoryId: "despensa-gourmet" },
+  { id: "mango-enchilado", name: "Mango enchilado", categoryId: "despensa-gourmet" },
+  { id: "pina-enchilada", name: "Piña enchilada", categoryId: "despensa-gourmet" },
+  { id: "pesto-rojo", name: "Pesto rojo", categoryId: "despensa-gourmet" },
+  { id: "pesto-genoves", name: "Pesto genovés", categoryId: "despensa-gourmet" },
+  { id: "ravioli", name: "Ravioli", categoryId: "despensa-gourmet" }
 ];

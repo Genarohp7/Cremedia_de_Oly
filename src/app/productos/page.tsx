@@ -5,7 +5,7 @@ import { catalogCategories, catalogProducts } from "@/data/catalog";
 import { siteConfig } from "@/data/site";
 
 const description =
-  "Conoce la selección de quesos, charcutería, semillas, productos oaxaqueños y especialidades gourmet de Cremería D’Oly.";
+  "Conoce la selección de quesos, charcutería, semillas, productos oaxaqueños y despensa gourmet de Cremería D’Oly.";
 
 export const metadata: Metadata = {
   title: "Productos | Cremería D’Oly",
